@@ -4,6 +4,8 @@ raspberry pi 4 + ubuntu server 22.04 LTS + ros humble for slam with realsense li
 
 # to use Remote Desktop Connection in UBUNTU SERVER 22, you should install ubuntu-desktop
 //https://www.layerstack.com/resources/tutorials/How-to-install-Graphical-User-Interface-GUI-for-Ubuntu-22-Cloud-Servers
+
+
 $ sudo apt install ubuntu-desktop -y
 
 $ sudo apt install xrdp -y
@@ -55,6 +57,7 @@ $ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 # serial network communication disable a login shell when you connect to your raspberry pi 4 where ttyS0 (my serial0 name)
 //to use serial network communication
+
 
 $ sudo systemctl mask serial-getty@ttyS0.service
 
