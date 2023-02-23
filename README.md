@@ -96,6 +96,7 @@ $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros
 
 
 <Install ROS 2 packages>
+  
 $ sudo apt update
   
 $ sudo apt upgrade
@@ -111,6 +112,7 @@ $ source /opt/ros/humble/setup.bash
 //it is for noetic, but it works in humble too 
 ////////////////installation///////////////
 <preparations>
+  
 $ export REALSENSE_SOURCE_DIR=$HOME/projects/librealsense/
   
 $ sudo apt-get install guvcview git libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev
@@ -124,6 +126,7 @@ $ mkdir $REALSENSE_SOURCE_DIR/build
 $ cd $REALSENSE_SOURCE_DIR/build
 
 <build>
+  
 $ export REALSENSE_INSTALL_PREFIX=/opt/realsense
   
 $ sudo mkdir -p $REALSENSE_INSTALL_PREFIX; 
@@ -135,11 +138,13 @@ $cmake ../ -DFORCE_RSUSB_BACKEND=true -DBUILD_PYTHON_BINDINGS=false -DCMAKE_BUIL
 $ make install
 
 <extend the ld search path>
+  
 $ sudo sh -c "echo $REALSENSE_INSTALL_PREFIX/lib > /etc/ld.so.conf.d/realsense.conf"
   
 $ sudo ldconfig
 
 <udev rules>
+  
 $ cd ~/projects/librealsense/
   
 $ sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/99-realsense-libusb.rules && sudo udevadm control --reload-rules && udevadm trigger
@@ -180,6 +185,7 @@ $ make -j1
 $ sudo make install
 
 <add python path>
+  
 $ vim ~/.zshrc
   
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib
