@@ -5,14 +5,19 @@ raspberry pi 4 + ubuntu server 22.04 LTS + ros humble for slam with realsense li
 # to use Remote Desktop Connection in UBUNTU SERVER 22, you should install ubuntu-desktop
 //https://www.layerstack.com/resources/tutorials/How-to-install-Graphical-User-Interface-GUI-for-Ubuntu-22-Cloud-Servers
 $ sudo apt install ubuntu-desktop -y
+
 $ sudo apt install xrdp -y
+
 $ sudo systemctl status xrdp
 
 //open your ubuntu server port 
 
 $ sudo ufw allow 22
+
 $ sudo ufw reload
+
 $ sudo ufw status
+
 $ sudo reboot
 
 from now on, you can connect your ubuntu server to your Remote Desktop Connection(the basic app that windows gives)
@@ -63,20 +68,25 @@ https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
 
 $ locale  # check for UTF-8
 
-sudo apt update && sudo apt install locales
-sudo locale-gen en_US en_US.UTF-8
-sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-export LANG=en_US.UTF-8
+$ sudo apt update && sudo apt install locales
+  
+$ sudo locale-gen en_US en_US.UTF-8
+  
+$ sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+  
+$ export LANG=en_US.UTF-8
 
-locale  # verify settings
+$ locale  # verify settings
 
 <Setup Sources>
 
 $ sudo apt install software-properties-common
+  
 $ sudo add-apt-repository universe
 
 
 $ sudo apt update && sudo apt install curl
+  
 $ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
 
 $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
@@ -84,7 +94,9 @@ $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros
 
 <Install ROS 2 packages>
 $ sudo apt update
+  
 $ sudo apt upgrade
+  
 $ sudo apt install ros-humble-desktop
 
 <Environment setup>
@@ -97,33 +109,48 @@ $ source /opt/ros/humble/setup.bash
 ////////////////installation///////////////
 <preparations>
 $ export REALSENSE_SOURCE_DIR=$HOME/projects/librealsense/
+  
 $ sudo apt-get install guvcview git libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev
+  
 $ sudo apt-get install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev
+  
 $ git clone https://github.com/IntelRealSense/librealsense.git $REALSENSE_SOURCE_DIR
+  
 $ mkdir $REALSENSE_SOURCE_DIR/build
+  
 $ cd $REALSENSE_SOURCE_DIR/build
 
 <build>
 $ export REALSENSE_INSTALL_PREFIX=/opt/realsense
+  
 $ sudo mkdir -p $REALSENSE_INSTALL_PREFIX; 
+  
 $ sudo chown $USER:$USER -R $REALSENSE_INSTALL_PREFIX # not relay needed -> you could run _make_ followed by _sudo make install_
+  
 $cmake ../ -DFORCE_RSUSB_BACKEND=true -DBUILD_PYTHON_BINDINGS=false -DCMAKE_BUILD_TYPE=release -DBUILD_EXAMPLES=true -DBUILD_GRAPHICAL_EXAMPLES=true -DCMAKE_INSTALL_PREFIX=$REALSENSE_INSTALL_PREFIX
+  
 $ make install
 
 <extend the ld search path>
 $ sudo sh -c "echo $REALSENSE_INSTALL_PREFIX/lib > /etc/ld.so.conf.d/realsense.conf"
+  
 $ sudo ldconfig
 
 <udev rules>
 $ cd ~/projects/librealsense/
+  
 $ sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/99-realsense-libusb.rules && sudo udevadm control --reload-rules && udevadm trigger
 
 <make cmake config avaliable>
+  
 $ echo "export realsense2_DIR=/opt/realsense/lib/cmake/realsense2" >> ~/.bashrc
 
 <reboot>
+  
 $ sudo reboot
+  
 <start realsense-viewer>
+  
 $ /opt/realsense/bin/realsense-viewer
 
 
@@ -132,21 +159,26 @@ $ /opt/realsense/bin/realsense-viewer
 
 ///////////////////////////////////////////////
 //and you should build for pyrealsense camera
+  
 $ cd ~/librealsense/build
 
 <for python2>
+  
 $ cmake .. -DBUILD_PYTHON_BINDINGS=bool:true -DPYTHON_EXECUTABLE=$(which python)
 
 <for python3>
+  
 $ cmake .. -DBUILD_PYTHON_BINDINGS=bool:true -DPYTHON_EXECUTABLE=$(which python3)
 
 //for example $ cmake .. -DBUILD_PYTHON_BINDINGS=bool:true -DPYTHON_EXECUTABLE=/usr/local/lib
 
 $ make -j1
+  
 $ sudo make install
 
 <add python path>
 $ vim ~/.zshrc
+  
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib
 
 $ source ~/.zshrc
