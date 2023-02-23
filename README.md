@@ -42,13 +42,15 @@ echo "export realsense2_DIR=/opt/realsense/lib/cmake/realsense2" >> ~/.bashrc
 
 # reboot
 
-#start realsense-viewer
+# start realsense-viewer
 /opt/realsense/bin/realsense-viewer
+
+
+
+# install pyrealsense2
 
 ///////////////////////////////////////////////
 //and you should build for pyrealsense camera
-
-install pyrealsense2
 $ cd ~/librealsense/build
 
 for python2
@@ -56,6 +58,7 @@ $ cmake .. -DBUILD_PYTHON_BINDINGS=bool:true -DPYTHON_EXECUTABLE=$(which python)
 
 for python3
 $ cmake .. -DBUILD_PYTHON_BINDINGS=bool:true -DPYTHON_EXECUTABLE=$(which python3)
+
 //for example $ cmake .. -DBUILD_PYTHON_BINDINGS=bool:true -DPYTHON_EXECUTABLE=/usr/local/lib
 $ make -j1
 $ sudo make install
