@@ -68,3 +68,11 @@ $ vim ~/.zshrc
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib
 
 $ source ~/.zshrc
+
+
+
+when you want to test the python code in librealsense/wrappers/python/examples
+
+you should change code to run
+import pyrealsense2 as rs  ->  import pyrealsense2.pyrealsense2 as rs
+
