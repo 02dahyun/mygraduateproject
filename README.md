@@ -1,13 +1,13 @@
 # mygraduateproject
- <hardware>
  
+ <hardware>
  - raspberry pi 4 
  - realsense lidar camera(L515)
  
 <software(os)>
  - ubuntu server 22.04 LTS 
- - ros humble
-
+ - ros humble ( for ubuntu server 22.04 LTS )
+ - pyrealsense (realsense sdk) 2.53.1
 
 # to use Remote Desktop Connection in UBUNTU SERVER 22, you should install ubuntu-desktop
 //https://www.layerstack.com/resources/tutorials/How-to-install-Graphical-User-Interface-GUI-for-Ubuntu-22-Cloud-Servers
