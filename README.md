@@ -70,9 +70,13 @@ export PYTHONPATH=$PYTHONPATH:/usr/local/lib
 $ source ~/.zshrc
 
 
-
+# change the library name importing
 when you want to test the python code in librealsense/wrappers/python/examples
 
 you should change code to run
 import pyrealsense2 as rs  ->  import pyrealsense2.pyrealsense2 as rs
 
+
+when you have python3 and ubuntu server 22 to use rpi.gpio, you should install rpi.gpio package
+
+$ sudo apt-get install python3-rpi.gpio
