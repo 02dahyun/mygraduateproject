@@ -1,5 +1,5 @@
 # mygraduateproject
-raspberry pi 4 + ubuntu server 22.04 LTS + ros humble for slam with realsense lidar camera(L515)
+raspberry pi 4 + ubuntu server 22.04 LTS + ros humble + realsense lidar camera(L515)
 
 
 # to use Remote Desktop Connection in UBUNTU SERVER 22, you should install ubuntu-desktop
@@ -195,9 +195,11 @@ $ source ~/.zshrc
 # start to use run the example codes
 
 <change the library name importing>
-when you want to test the python code in librealsense/wrappers/python/examples
+  
+when you want to test the python code, the examples are in librealsense/wrappers/python/examples
 
 <you should change code to run in python>
+  
 import pyrealsense2 as rs  ->  import pyrealsense2.pyrealsense2 as rs
 
 
