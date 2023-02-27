@@ -215,3 +215,12 @@ import pyrealsense2 as rs  ->  import pyrealsense2.pyrealsense2 as rs
 <when you have python3 and ubuntu server 22 to use rpi.gpio, you should install rpi.gpio package>
 
 $ sudo apt-get install python3-rpi.gpio
+ 
+# install application
+ 
+<install thonny, the python IDE>
+$ sudo apt install thonny
+
+ <install firefox, the web browser >
+$ sudo apt-get install firefox
+ 
