@@ -197,7 +197,7 @@ $ sudo make install
   
 $ vim ~/.zshrc
   
-export PYTHONPATH=$PYTHONPATH:/usr/local/lib
+export PYTHONPATH=$PYTHONPATH:/usr/bin/python3
 
 $ source ~/.zshrc
 
