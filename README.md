@@ -219,13 +219,12 @@ $ sudo apt-get install python3-rpi.gpio
 # install application
  
 <install thonny, the python IDE> -> python 3.3.14
+$ pip3 install thonny
 $ sudo apt install thonny
 
 <uninstall thonny, the python IDE>
 $ sudo apt purge thonny
 
-I preferred the python 3.10 so i installed
-$ pip3 install thonny
 
 
  <install firefox, the web browser >
